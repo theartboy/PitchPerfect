@@ -25,7 +25,7 @@
                                     <action selector="recordAudio:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Azr-P0-TZG"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-Wf-ymN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-Wf-ymN">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.83315641983695654" green="0.14754506570718495" blue="0.15399104997241012" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,7 +82,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="microphoneButton" destination="y9M-re-3dt" id="YtK-02-WLj"/>
                         <outlet property="recordingLabel" destination="fYc-Wf-ymN" id="u45-t0-OjR"/>
+                        <outlet property="stopButton" destination="Bgx-Tz-oag" id="nl4-FW-bQv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
