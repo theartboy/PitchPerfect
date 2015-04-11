@@ -44,10 +44,10 @@
                         <color key="backgroundColor" red="0.60682537595381136" green="0.78421341360723085" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="fYc-Wf-ymN" secondAttribute="centerX" id="5YL-fy-xh7"/>
-                            <constraint firstItem="Bgx-Tz-oag" firstAttribute="top" secondItem="y9M-re-3dt" secondAttribute="bottom" constant="49" id="Zl7-jy-jSe"/>
                             <constraint firstAttribute="centerX" secondItem="y9M-re-3dt" secondAttribute="centerX" id="a6m-Dj-ECe"/>
                             <constraint firstItem="fYc-Wf-ymN" firstAttribute="top" secondItem="y9M-re-3dt" secondAttribute="bottom" constant="7" id="lQC-B8-pcA"/>
                             <constraint firstAttribute="centerY" secondItem="y9M-re-3dt" secondAttribute="centerY" id="qlS-zh-ccD"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Bgx-Tz-oag" secondAttribute="bottom" constant="151" id="vJ5-mH-HZa"/>
                             <constraint firstAttribute="centerX" secondItem="Bgx-Tz-oag" secondAttribute="centerX" constant="-2" id="wZq-mE-1L9"/>
                         </constraints>
                         <variation key="default">
@@ -61,8 +61,8 @@
                                 <exclude reference="qlS-zh-ccD"/>
                                 <exclude reference="5YL-fy-xh7"/>
                                 <exclude reference="lQC-B8-pcA"/>
-                                <exclude reference="Zl7-jy-jSe"/>
                                 <exclude reference="wZq-mE-1L9"/>
+                                <exclude reference="vJ5-mH-HZa"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -76,8 +76,8 @@
                                 <include reference="qlS-zh-ccD"/>
                                 <include reference="5YL-fy-xh7"/>
                                 <include reference="lQC-B8-pcA"/>
-                                <include reference="Zl7-jy-jSe"/>
                                 <include reference="wZq-mE-1L9"/>
+                                <include reference="vJ5-mH-HZa"/>
                             </mask>
                         </variation>
                     </view>
