@@ -7,16 +7,31 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
     @IBOutlet weak var slowButton: UIButton!
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
+        let url = NSURL.fileURLWithPath(
+            NSBundle.mainBundle().pathForResource("movie_quote",
+                ofType: "mp3")!)
+        
+        var error: NSError?
+        
+        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        
+        if let err = error {
+            println("audioPlayer error \(err.localizedDescription)")
+        } else {
+//            audioPlayer?.delegate = self
+            audioPlayer?.prepareToPlay()
+        }    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -24,7 +39,9 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSlowAudio(sender: UIButton) {
-        
+        if let player = audioPlayer {
+            player.play()
+        }
     }
 
     /*
