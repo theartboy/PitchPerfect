@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="s2u-4A-E6C">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -37,9 +38,6 @@
                                 <state key="normal" image="stopButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="175" y="487" width="50" height="50"/>
-                                </variation>
                                 <connections>
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zbm-D0-2r0"/>
                                     <segue destination="cd4-Kt-Z4G" kind="show" id="Xdf-Nh-EWI"/>
@@ -52,7 +50,7 @@
                             <constraint firstAttribute="centerX" secondItem="y9M-re-3dt" secondAttribute="centerX" id="a6m-Dj-ECe"/>
                             <constraint firstItem="fYc-Wf-ymN" firstAttribute="top" secondItem="y9M-re-3dt" secondAttribute="bottom" constant="7" id="lQC-B8-pcA"/>
                             <constraint firstAttribute="centerY" secondItem="y9M-re-3dt" secondAttribute="centerY" id="qlS-zh-ccD"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Bgx-Tz-oag" secondAttribute="bottom" constant="151" id="vJ5-mH-HZa"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Bgx-Tz-oag" secondAttribute="bottom" constant="100" id="vJ5-mH-HZa"/>
                             <constraint firstAttribute="centerX" secondItem="Bgx-Tz-oag" secondAttribute="centerX" constant="-2" id="wZq-mE-1L9"/>
                         </constraints>
                         <variation key="default">
@@ -62,12 +60,12 @@
                                 <exclude reference="Bgx-Tz-oag"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="a6m-Dj-ECe"/>
-                                <exclude reference="qlS-zh-ccD"/>
+                                <exclude reference="vJ5-mH-HZa"/>
                                 <exclude reference="5YL-fy-xh7"/>
                                 <exclude reference="lQC-B8-pcA"/>
                                 <exclude reference="wZq-mE-1L9"/>
-                                <exclude reference="vJ5-mH-HZa"/>
+                                <exclude reference="a6m-Dj-ECe"/>
+                                <exclude reference="qlS-zh-ccD"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -77,12 +75,12 @@
                                 <include reference="Bgx-Tz-oag"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="a6m-Dj-ECe"/>
-                                <include reference="qlS-zh-ccD"/>
+                                <include reference="vJ5-mH-HZa"/>
                                 <include reference="5YL-fy-xh7"/>
                                 <include reference="lQC-B8-pcA"/>
                                 <include reference="wZq-mE-1L9"/>
-                                <include reference="vJ5-mH-HZa"/>
+                                <include reference="a6m-Dj-ECe"/>
+                                <include reference="qlS-zh-ccD"/>
                             </mask>
                         </variation>
                     </view>
@@ -106,9 +104,10 @@
                         <viewControllerLayoutGuide type="bottom" id="XPZ-oH-Xf7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="run-L1-7Xz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uro-1n-WUP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uro-1n-WUP">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="slow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,28 +116,56 @@
                                     <action selector="playSlowAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="Qqk-JC-z4N"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SU0-xv-zlt">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="fast@2x-iphone-1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URH-L9-9Cg">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="stopButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XPZ-oH-Xf7" firstAttribute="top" secondItem="URH-L9-9Cg" secondAttribute="bottom" constant="100" id="EwA-lV-Vlb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SU0-xv-zlt" secondAttribute="trailing" constant="30" id="Iy7-NO-zx8"/>
                             <constraint firstItem="uro-1n-WUP" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="30" id="UZR-g8-UtW"/>
+                            <constraint firstAttribute="centerX" secondItem="URH-L9-9Cg" secondAttribute="centerX" id="Yed-cJ-oXI"/>
                             <constraint firstItem="uro-1n-WUP" firstAttribute="top" secondItem="foe-5Y-Esc" secondAttribute="bottom" constant="50" id="fZu-J4-ieM"/>
+                            <constraint firstItem="SU0-xv-zlt" firstAttribute="top" secondItem="foe-5Y-Esc" secondAttribute="bottom" constant="50" id="z2A-4N-6c6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="uro-1n-WUP"/>
+                                <exclude reference="SU0-xv-zlt"/>
+                                <exclude reference="URH-L9-9Cg"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="UZR-g8-UtW"/>
                                 <exclude reference="fZu-J4-ieM"/>
+                                <exclude reference="Iy7-NO-zx8"/>
+                                <exclude reference="z2A-4N-6c6"/>
+                                <exclude reference="Yed-cJ-oXI"/>
+                                <exclude reference="EwA-lV-Vlb"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="uro-1n-WUP"/>
+                                <include reference="SU0-xv-zlt"/>
+                                <include reference="URH-L9-9Cg"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="UZR-g8-UtW"/>
                                 <include reference="fZu-J4-ieM"/>
+                                <include reference="Iy7-NO-zx8"/>
+                                <include reference="z2A-4N-6c6"/>
+                                <include reference="Yed-cJ-oXI"/>
+                                <include reference="EwA-lV-Vlb"/>
                             </mask>
                         </variation>
                     </view>
@@ -170,6 +197,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fast@2x-iphone-1" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
