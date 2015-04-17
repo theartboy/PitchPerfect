@@ -121,12 +121,18 @@
                                 <state key="normal" image="fast@2x-iphone-1">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="playFastAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="XbZ-wJ-TOx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URH-L9-9Cg">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="stopButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="WB2-M0-FHn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -170,7 +176,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="fastButton" destination="SU0-xv-zlt" id="pcd-yS-9dZ"/>
                         <outlet property="slowButton" destination="uro-1n-WUP" id="P3a-CX-cpT"/>
+                        <outlet property="stopButton" destination="URH-L9-9Cg" id="C2s-88-bxz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QI-Ze-5jE" userLabel="First Responder" sceneMemberID="firstResponder"/>

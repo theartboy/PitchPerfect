@@ -18,7 +18,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(animated: Bool) {
-        recordingLabel.hidden = true
+        recordingLabel.hidden = false
+        recordingLabel.text = "tap to record"
         stopButton.hidden = true
         microphoneButton.enabled = true
     }
@@ -30,7 +31,8 @@ class ViewController: UIViewController {
 
     @IBAction func recordAudio(sender: UIButton) {
 //        TODO: record audio
-        recordingLabel.hidden = false
+//        recordingLabel.hidden = false
+        recordingLabel.text = "recording"
         stopButton.hidden = false
         microphoneButton.enabled = false
         

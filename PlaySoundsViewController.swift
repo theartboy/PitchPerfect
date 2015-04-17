@@ -12,26 +12,14 @@ import AVFoundation
 class PlaySoundsViewController: UIViewController {
 
     @IBOutlet weak var slowButton: UIButton!
+    @IBOutlet weak var fastButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    
     var audioPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-//        let url = NSURL.fileURLWithPath(
-//            NSBundle.mainBundle().pathForResource("movie_quote",
-//                ofType: "mp3")!)
-//        
-//        var error: NSError?
-//        
-//        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
-//        
-//        if let err = error {
-//            println("audioPlayer error \(err.localizedDescription)")
-//        } else {
-////            audioPlayer?.delegate = self
-//            audioPlayer?.prepareToPlay()
-//        }
         if var filePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3"){
             var filePathUrl = NSURL.fileURLWithPath(filePath)
             audioPlayer = AVAudioPlayer(contentsOfURL: filePathUrl, error: nil)
@@ -52,11 +40,19 @@ class PlaySoundsViewController: UIViewController {
         audioPlayer.stop()
         audioPlayer.rate = 0.5
         audioPlayer.play()
-//        if let player = audioPlayer {
-//            player.play()
-//        }
     }
 
+    @IBAction func playFastAudio(sender: AnyObject) {
+        audioPlayer.stop()
+        audioPlayer.rate = 2.0
+        audioPlayer.play()
+    }
+    
+    @IBAction func stopAudio(sender: AnyObject) {
+        audioPlayer.stop()
+    }
+
+    
     /*
     // MARK: - Navigation
 
