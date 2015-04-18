@@ -9,7 +9,7 @@
         <!--Record-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="RecordSoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -40,7 +40,6 @@
                                 </state>
                                 <connections>
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zbm-D0-2r0"/>
-                                    <segue destination="cd4-Kt-Z4G" kind="show" id="Xdf-Nh-EWI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -89,6 +88,7 @@
                         <outlet property="microphoneButton" destination="y9M-re-3dt" id="YtK-02-WLj"/>
                         <outlet property="recordingLabel" destination="fYc-Wf-ymN" id="u45-t0-OjR"/>
                         <outlet property="stopButton" destination="Bgx-Tz-oag" id="nl4-FW-bQv"/>
+                        <segue destination="cd4-Kt-Z4G" kind="show" identifier="stopRecording" id="azP-sj-ca8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QI-Ze-5jE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="822"/>
+            <point key="canvasLocation" x="1744.5" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="soH-iZ-EqQ">
