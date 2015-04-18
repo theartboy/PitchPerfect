@@ -14,6 +14,7 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var slowButton: UIButton!
     @IBOutlet weak var fastButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var pitchUpButton: UIButton!
     
     var audioPlayer: AVAudioPlayer!
     var receivedAudio: RecordedAudio!
@@ -43,7 +44,7 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func playSlowAudio(sender: UIButton) {
 //        audioPlayer.stop()
-        audioPlayer.rate = 0.3
+        audioPlayer.rate = 0.4
 //        audioPlayer.currentTime = 0.0
 //        audioPlayer.play()
         playAudio()
@@ -57,6 +58,9 @@ class PlaySoundsViewController: UIViewController {
         playAudio()
     }
     
+    @IBAction func playChipmunkAudio(sender: AnyObject) {
+        
+    }
     @IBAction func stopAudio(sender: AnyObject) {
         audioPlayer.stop()
     }

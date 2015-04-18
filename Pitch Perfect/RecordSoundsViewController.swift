@@ -5,7 +5,7 @@
 //  Created by John McCaffrey on 4/8/15.
 //  Copyright (c) 2015 John McCaffrey. All rights reserved.
 //
-
+////TODO: Remove old recordings when app closes to save disk space?
 import UIKit
 
 import AVFoundation
