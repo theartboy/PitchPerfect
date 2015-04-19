@@ -91,7 +91,7 @@ class PlaySoundsViewController: UIViewController {
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         audioEngine.startAndReturnError(nil)
-        
+        audioPlayerNode.volume = 1.0
         audioPlayerNode.play()
     
     }
@@ -100,8 +100,11 @@ class PlaySoundsViewController: UIViewController {
     }
 
     func playAudio() {
+        audioEngine.stop()
+        audioEngine.reset()
         audioPlayer.stop()
         audioPlayer.currentTime = 0.0
+        audioPlayer.volume = 1.0
         audioPlayer.play()
     }
 
