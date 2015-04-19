@@ -15,6 +15,7 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var fastButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pitchUpButton: UIButton!
+    @IBOutlet weak var pitchDownButton: UIButton!
     
     var audioPlayer: AVAudioPlayer!
     var receivedAudio: RecordedAudio!
@@ -67,6 +68,11 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func playChipmunkAudio(sender: UIButton) {
         playAudioWithVariablePitch(1000)
     }
+    
+    @IBAction func playVaderAudio(sender: AnyObject) {
+        playAudioWithVariablePitch(-1000)
+    }
+    
     func playAudioWithVariablePitch(pitch: Float){
         audioPlayer.stop()
         audioEngine.stop()
@@ -76,7 +82,7 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.attachNode(audioPlayerNode)
         
         var changePitchEffect = AVAudioUnitTimePitch()
-        changePitchEffect.pitch = 1000
+        changePitchEffect.pitch = pitch
         audioEngine.attachNode(changePitchEffect)
         
         

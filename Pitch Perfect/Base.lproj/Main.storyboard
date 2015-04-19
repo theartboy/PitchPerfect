@@ -142,6 +142,15 @@
                                     <action selector="playChipmunkAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="ddM-R4-5w6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLa-Cy-Iem">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="darthvader@2x-iphone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playVaderAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="yHV-4U-T9d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -150,7 +159,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="SU0-xv-zlt" secondAttribute="trailing" constant="30" id="Iy7-NO-zx8"/>
                             <constraint firstItem="uro-1n-WUP" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="30" id="UZR-g8-UtW"/>
                             <constraint firstAttribute="centerX" secondItem="URH-L9-9Cg" secondAttribute="centerX" id="Yed-cJ-oXI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xLa-Cy-Iem" secondAttribute="trailing" constant="30" id="d0k-Zt-fnV"/>
                             <constraint firstItem="uro-1n-WUP" firstAttribute="top" secondItem="foe-5Y-Esc" secondAttribute="bottom" constant="50" id="fZu-J4-ieM"/>
+                            <constraint firstItem="xLa-Cy-Iem" firstAttribute="top" secondItem="SU0-xv-zlt" secondAttribute="bottom" constant="52" id="hgw-lz-74D"/>
                             <constraint firstItem="bdL-S7-2Nv" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="30" id="xqD-gx-rKM"/>
                             <constraint firstItem="SU0-xv-zlt" firstAttribute="top" secondItem="foe-5Y-Esc" secondAttribute="bottom" constant="50" id="z2A-4N-6c6"/>
                         </constraints>
@@ -160,14 +171,17 @@
                                 <exclude reference="SU0-xv-zlt"/>
                                 <exclude reference="URH-L9-9Cg"/>
                                 <exclude reference="bdL-S7-2Nv"/>
+                                <exclude reference="xLa-Cy-Iem"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="UZR-g8-UtW"/>
                                 <exclude reference="fZu-J4-ieM"/>
-                                <exclude reference="Iy7-NO-zx8"/>
-                                <exclude reference="z2A-4N-6c6"/>
                                 <exclude reference="5Qb-uU-zJ6"/>
                                 <exclude reference="xqD-gx-rKM"/>
+                                <exclude reference="Iy7-NO-zx8"/>
+                                <exclude reference="z2A-4N-6c6"/>
+                                <exclude reference="d0k-Zt-fnV"/>
+                                <exclude reference="hgw-lz-74D"/>
                                 <exclude reference="Yed-cJ-oXI"/>
                                 <exclude reference="EwA-lV-Vlb"/>
                             </mask>
@@ -178,14 +192,17 @@
                                 <include reference="SU0-xv-zlt"/>
                                 <include reference="URH-L9-9Cg"/>
                                 <include reference="bdL-S7-2Nv"/>
+                                <include reference="xLa-Cy-Iem"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="UZR-g8-UtW"/>
                                 <include reference="fZu-J4-ieM"/>
-                                <include reference="Iy7-NO-zx8"/>
-                                <include reference="z2A-4N-6c6"/>
                                 <include reference="5Qb-uU-zJ6"/>
                                 <include reference="xqD-gx-rKM"/>
+                                <include reference="Iy7-NO-zx8"/>
+                                <include reference="z2A-4N-6c6"/>
+                                <include reference="d0k-Zt-fnV"/>
+                                <include reference="hgw-lz-74D"/>
                                 <include reference="Yed-cJ-oXI"/>
                                 <include reference="EwA-lV-Vlb"/>
                             </mask>
@@ -193,6 +210,7 @@
                     </view>
                     <connections>
                         <outlet property="fastButton" destination="SU0-xv-zlt" id="pcd-yS-9dZ"/>
+                        <outlet property="pitchDownButton" destination="xLa-Cy-Iem" id="bk0-aa-sWX"/>
                         <outlet property="pitchUpButton" destination="bdL-S7-2Nv" id="1Lo-dM-U0q"/>
                         <outlet property="slowButton" destination="uro-1n-WUP" id="P3a-CX-cpT"/>
                         <outlet property="stopButton" destination="URH-L9-9Cg" id="C2s-88-bxz"/>
@@ -223,6 +241,7 @@
     </scenes>
     <resources>
         <image name="chipmunk" width="100" height="100"/>
+        <image name="darthvader@2x-iphone" width="100" height="100"/>
         <image name="fast@2x-iphone-1" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>
