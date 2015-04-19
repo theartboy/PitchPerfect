@@ -29,7 +29,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-Wf-ymN">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.83315641983695654" green="0.14754506570718495" blue="0.15399104997241012" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.58589504076086962" green="0.13108926935529847" blue="0.40293047981299107" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgx-Tz-oag">
@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.60682537595381136" green="0.78421341360723085" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.61495242101154202" green="0.58853359245458581" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="fYc-Wf-ymN" secondAttribute="centerX" id="5YL-fy-xh7"/>
                             <constraint firstAttribute="centerX" secondItem="y9M-re-3dt" secondAttribute="centerX" id="a6m-Dj-ECe"/>
@@ -152,7 +152,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.82507152588898236" green="0.61891036189255555" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bdL-S7-2Nv" firstAttribute="top" secondItem="uro-1n-WUP" secondAttribute="bottom" constant="52" id="5Qb-uU-zJ6"/>
                             <constraint firstItem="XPZ-oH-Xf7" firstAttribute="top" secondItem="URH-L9-9Cg" secondAttribute="bottom" constant="100" id="EwA-lV-Vlb"/>
