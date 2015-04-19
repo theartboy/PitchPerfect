@@ -138,9 +138,6 @@
                                 <state key="normal" image="chipmunk">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="66" y="266" width="100" height="100"/>
-                                </variation>
                                 <connections>
                                     <action selector="playChipmunkAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="ddM-R4-5w6"/>
                                 </connections>
@@ -148,12 +145,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bdL-S7-2Nv" firstAttribute="top" secondItem="uro-1n-WUP" secondAttribute="bottom" constant="52" id="5Qb-uU-zJ6"/>
                             <constraint firstItem="XPZ-oH-Xf7" firstAttribute="top" secondItem="URH-L9-9Cg" secondAttribute="bottom" constant="100" id="EwA-lV-Vlb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SU0-xv-zlt" secondAttribute="trailing" constant="30" id="Iy7-NO-zx8"/>
-                            <constraint firstItem="uro-1n-WUP" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="50" id="UZR-g8-UtW"/>
+                            <constraint firstItem="uro-1n-WUP" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="30" id="UZR-g8-UtW"/>
                             <constraint firstAttribute="centerX" secondItem="URH-L9-9Cg" secondAttribute="centerX" id="Yed-cJ-oXI"/>
                             <constraint firstItem="uro-1n-WUP" firstAttribute="top" secondItem="foe-5Y-Esc" secondAttribute="bottom" constant="50" id="fZu-J4-ieM"/>
-                            <constraint firstItem="bdL-S7-2Nv" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="50" id="xqD-gx-rKM"/>
+                            <constraint firstItem="bdL-S7-2Nv" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="30" id="xqD-gx-rKM"/>
                             <constraint firstItem="SU0-xv-zlt" firstAttribute="top" secondItem="foe-5Y-Esc" secondAttribute="bottom" constant="50" id="z2A-4N-6c6"/>
                         </constraints>
                         <variation key="default">
@@ -166,9 +164,10 @@
                             <mask key="constraints">
                                 <exclude reference="UZR-g8-UtW"/>
                                 <exclude reference="fZu-J4-ieM"/>
-                                <exclude reference="xqD-gx-rKM"/>
                                 <exclude reference="Iy7-NO-zx8"/>
                                 <exclude reference="z2A-4N-6c6"/>
+                                <exclude reference="5Qb-uU-zJ6"/>
+                                <exclude reference="xqD-gx-rKM"/>
                                 <exclude reference="Yed-cJ-oXI"/>
                                 <exclude reference="EwA-lV-Vlb"/>
                             </mask>
@@ -183,9 +182,10 @@
                             <mask key="constraints">
                                 <include reference="UZR-g8-UtW"/>
                                 <include reference="fZu-J4-ieM"/>
-                                <include reference="xqD-gx-rKM"/>
                                 <include reference="Iy7-NO-zx8"/>
                                 <include reference="z2A-4N-6c6"/>
+                                <include reference="5Qb-uU-zJ6"/>
+                                <include reference="xqD-gx-rKM"/>
                                 <include reference="Yed-cJ-oXI"/>
                                 <include reference="EwA-lV-Vlb"/>
                             </mask>
