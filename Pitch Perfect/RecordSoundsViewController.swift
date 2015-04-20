@@ -43,7 +43,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
  /////////////////////
         //Inside func recordAudio(sender: UIButton)
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        
+
         var currentDateTime = NSDate()
         var formatter = NSDateFormatter()
         formatter.dateFormat = "ddMMyyyy-HHmmss"

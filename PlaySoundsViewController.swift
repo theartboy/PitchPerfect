@@ -22,6 +22,7 @@ class PlaySoundsViewController: UIViewController {
     var audioEngine: AVAudioEngine!
     
     var audioFile: AVAudioFile!
+//    let AVAudioSessionCategoryPlayAndRecord: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,16 @@ class PlaySoundsViewController: UIViewController {
 //        }else{
 //            println("file path is empty or incorrect")
 //        }
+        let session = AVAudioSession.sharedInstance()
+//        var error: NSError?
+        
+//        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: &error)
+//        session.overrideOutputAudioPort(AVAudioSessionPortOverride.None, error: &error)
+//        session.setActive(true, error: &error)
+        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker, error: nil)
+        session.setActive(true, error: nil)
+        
         audioEngine = AVAudioEngine()
         
         audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
