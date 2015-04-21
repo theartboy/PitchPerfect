@@ -16,29 +16,47 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var microphoneButton: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
+    let p2x = UIImage(named: "pause2x.png") as UIImage!
+    let r2x = UIImage(named: "rerecord2x.png") as UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(animated: Bool) {
-        recordingLabel.hidden = false
-        recordingLabel.text = "tap to record"
-        stopButton.hidden = true
-        microphoneButton.enabled = true
+//        recordingLabel.hidden = false
+//        recordingLabel.text = "tap the mic to record"
+////        stopButton.hidden = true
+//        stopButton.alpha = 0.5
+//        pauseButton.alpha = 0.5
+//        microphoneButton.enabled = true
+        hideStuff()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func hideStuff(){
+        recordingLabel.hidden = false
+        recordingLabel.text = "tap the mic to record"
+        //        stopButton.hidden = true
+        stopButton.alpha = 0.5
+        pauseButton.alpha = 0.5
+        microphoneButton.enabled = true
+        pauseButton.setImage(p2x, forState:UIControlState.Normal)
+    
+    }
     @IBAction func recordAudio(sender: UIButton) {
 //        recordingLabel.hidden = false
-        recordingLabel.text = "recording"
-        stopButton.hidden = false
+        recordingLabel.text = "recording..."
+//        stopButton.hidden = false
+        stopButton.alpha = 1.0
+        pauseButton.alpha = 1.0
         microphoneButton.enabled = false
  /////////////////////
         //Inside func recordAudio(sender: UIButton)
@@ -60,7 +78,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        
         }
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if (flag){
@@ -70,9 +87,26 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         }else{
             println("Recording was a failure")
-            recordingLabel.hidden = false
-            recordingLabel.text = "tap to record"
-            stopButton.hidden = true
+//            recordingLabel.hidden = false
+//            recordingLabel.text = "tap the mic to record"
+//            //        stopButton.hidden = true
+//            stopButton.alpha = 0.5
+//            pauseButton.alpha = 0.5
+//            microphoneButton.enabled = true
+            hideStuff()
+        }
+    }
+    @IBAction func pauseRecording(sender: AnyObject) {
+        if (audioRecorder.recording){
+            audioRecorder.pause()
+            pauseButton.setImage(r2x, forState:UIControlState.Normal)
+            recordingLabel.text = "resume recording"
+
+        }else{
+            audioRecorder.record()
+            pauseButton.setImage(p2x, forState:UIControlState.Normal)
+            recordingLabel.text = "recording..."
+
         }
     }
     
@@ -89,8 +123,13 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.stop()
         var audioSession = AVAudioSession.sharedInstance()
         audioSession.setActive(false, error: nil)
-        recordingLabel.hidden = true
-        stopButton.hidden = true
+        hideStuff()
+//        recordingLabel.hidden = false
+//        recordingLabel.text = "tap the mic to record"
+//        //        stopButton.hidden = true
+//        stopButton.alpha = 0.5
+//        pauseButton.alpha = 0.5
+//        microphoneButton.enabled = true
     }
 }
 

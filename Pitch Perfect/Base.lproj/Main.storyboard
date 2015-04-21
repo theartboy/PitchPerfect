@@ -23,14 +23,17 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="recordAudio:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Azr-P0-TZG"/>
+                                    <action selector="recordAudio:" destination="vXZ-lx-hvc" eventType="touchDown" id="QBp-RE-301"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-Wf-ymN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap the mic to record" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-Wf-ymN">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.58589504076086962" green="0.13108926935529847" blue="0.40293047981299107" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="91" y="378" width="218.5" height="33.5"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgx-Tz-oag">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -41,29 +44,43 @@
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="zbm-D0-2r0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECB-do-tWm">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="pause2x">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="e0A-Dt-grO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.61495242101154202" green="0.58853359245458581" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="fYc-Wf-ymN" secondAttribute="centerX" id="5YL-fy-xh7"/>
+                            <constraint firstAttribute="centerX" secondItem="Bgx-Tz-oag" secondAttribute="centerX" constant="-29" id="0f5-M1-ysX"/>
+                            <constraint firstAttribute="centerX" secondItem="fYc-Wf-ymN" secondAttribute="centerX" constant="-0.25" id="52M-2h-tPc"/>
+                            <constraint firstAttribute="centerX" secondItem="ECB-do-tWm" secondAttribute="centerX" constant="29" id="63g-XF-Icy"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ECB-do-tWm" secondAttribute="bottom" constant="98" id="EDb-Wb-hUO"/>
                             <constraint firstAttribute="centerX" secondItem="y9M-re-3dt" secondAttribute="centerX" id="a6m-Dj-ECe"/>
-                            <constraint firstItem="fYc-Wf-ymN" firstAttribute="top" secondItem="y9M-re-3dt" secondAttribute="bottom" constant="7" id="lQC-B8-pcA"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Bgx-Tz-oag" secondAttribute="bottom" constant="98" id="cdl-9Q-abG"/>
                             <constraint firstAttribute="centerY" secondItem="y9M-re-3dt" secondAttribute="centerY" id="qlS-zh-ccD"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Bgx-Tz-oag" secondAttribute="bottom" constant="100" id="vJ5-mH-HZa"/>
-                            <constraint firstAttribute="centerX" secondItem="Bgx-Tz-oag" secondAttribute="centerX" constant="-2" id="wZq-mE-1L9"/>
+                            <constraint firstItem="fYc-Wf-ymN" firstAttribute="top" secondItem="y9M-re-3dt" secondAttribute="bottom" constant="28" id="z0h-q8-uXu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="y9M-re-3dt"/>
                                 <exclude reference="fYc-Wf-ymN"/>
                                 <exclude reference="Bgx-Tz-oag"/>
+                                <exclude reference="ECB-do-tWm"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="vJ5-mH-HZa"/>
-                                <exclude reference="5YL-fy-xh7"/>
-                                <exclude reference="lQC-B8-pcA"/>
-                                <exclude reference="wZq-mE-1L9"/>
                                 <exclude reference="a6m-Dj-ECe"/>
                                 <exclude reference="qlS-zh-ccD"/>
+                                <exclude reference="52M-2h-tPc"/>
+                                <exclude reference="z0h-q8-uXu"/>
+                                <exclude reference="63g-XF-Icy"/>
+                                <exclude reference="0f5-M1-ysX"/>
+                                <exclude reference="EDb-Wb-hUO"/>
+                                <exclude reference="cdl-9Q-abG"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -71,20 +88,24 @@
                                 <include reference="y9M-re-3dt"/>
                                 <include reference="fYc-Wf-ymN"/>
                                 <include reference="Bgx-Tz-oag"/>
+                                <include reference="ECB-do-tWm"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="vJ5-mH-HZa"/>
-                                <include reference="5YL-fy-xh7"/>
-                                <include reference="lQC-B8-pcA"/>
-                                <include reference="wZq-mE-1L9"/>
                                 <include reference="a6m-Dj-ECe"/>
                                 <include reference="qlS-zh-ccD"/>
+                                <include reference="52M-2h-tPc"/>
+                                <include reference="z0h-q8-uXu"/>
+                                <include reference="63g-XF-Icy"/>
+                                <include reference="0f5-M1-ysX"/>
+                                <include reference="EDb-Wb-hUO"/>
+                                <include reference="cdl-9Q-abG"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="72r-qJ-7RR"/>
                     <connections>
                         <outlet property="microphoneButton" destination="y9M-re-3dt" id="YtK-02-WLj"/>
+                        <outlet property="pauseButton" destination="ECB-do-tWm" id="4qd-GD-Rfj"/>
                         <outlet property="recordingLabel" destination="fYc-Wf-ymN" id="u45-t0-OjR"/>
                         <outlet property="stopButton" destination="Bgx-Tz-oag" id="nl4-FW-bQv"/>
                         <segue destination="cd4-Kt-Z4G" kind="show" identifier="stopRecording" id="azP-sj-ca8"/>
@@ -244,6 +265,7 @@
         <image name="darthvader@2x-iphone" width="100" height="100"/>
         <image name="fast@2x-iphone-1" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="pause2x" width="50" height="50"/>
         <image name="slow" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
     </resources>
