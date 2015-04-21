@@ -172,17 +172,31 @@
                                     <action selector="playVaderAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="yHV-4U-T9d"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nA-1M-Kqh">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="robot">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="177" y="381" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playDistortAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="pH9-Fd-Hn5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.82507152588898236" green="0.61891036189255555" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bdL-S7-2Nv" firstAttribute="top" secondItem="uro-1n-WUP" secondAttribute="bottom" constant="52" id="5Qb-uU-zJ6"/>
                             <constraint firstItem="XPZ-oH-Xf7" firstAttribute="top" secondItem="URH-L9-9Cg" secondAttribute="bottom" constant="100" id="EwA-lV-Vlb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SU0-xv-zlt" secondAttribute="trailing" constant="30" id="Iy7-NO-zx8"/>
+                            <constraint firstItem="URH-L9-9Cg" firstAttribute="top" secondItem="7nA-1M-Kqh" secondAttribute="bottom" constant="39" id="NTL-VT-kgG"/>
                             <constraint firstItem="uro-1n-WUP" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="30" id="UZR-g8-UtW"/>
                             <constraint firstAttribute="centerX" secondItem="URH-L9-9Cg" secondAttribute="centerX" id="Yed-cJ-oXI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xLa-Cy-Iem" secondAttribute="trailing" constant="30" id="d0k-Zt-fnV"/>
                             <constraint firstItem="uro-1n-WUP" firstAttribute="top" secondItem="foe-5Y-Esc" secondAttribute="bottom" constant="50" id="fZu-J4-ieM"/>
                             <constraint firstItem="xLa-Cy-Iem" firstAttribute="top" secondItem="SU0-xv-zlt" secondAttribute="bottom" constant="52" id="hgw-lz-74D"/>
+                            <constraint firstAttribute="centerX" secondItem="7nA-1M-Kqh" secondAttribute="centerX" id="wi5-Sy-sgx"/>
                             <constraint firstItem="bdL-S7-2Nv" firstAttribute="leading" secondItem="run-L1-7Xz" secondAttribute="leadingMargin" constant="30" id="xqD-gx-rKM"/>
                             <constraint firstItem="SU0-xv-zlt" firstAttribute="top" secondItem="foe-5Y-Esc" secondAttribute="bottom" constant="50" id="z2A-4N-6c6"/>
                         </constraints>
@@ -193,6 +207,7 @@
                                 <exclude reference="URH-L9-9Cg"/>
                                 <exclude reference="bdL-S7-2Nv"/>
                                 <exclude reference="xLa-Cy-Iem"/>
+                                <exclude reference="7nA-1M-Kqh"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="UZR-g8-UtW"/>
@@ -203,6 +218,8 @@
                                 <exclude reference="z2A-4N-6c6"/>
                                 <exclude reference="d0k-Zt-fnV"/>
                                 <exclude reference="hgw-lz-74D"/>
+                                <exclude reference="wi5-Sy-sgx"/>
+                                <exclude reference="NTL-VT-kgG"/>
                                 <exclude reference="Yed-cJ-oXI"/>
                                 <exclude reference="EwA-lV-Vlb"/>
                             </mask>
@@ -214,6 +231,7 @@
                                 <include reference="URH-L9-9Cg"/>
                                 <include reference="bdL-S7-2Nv"/>
                                 <include reference="xLa-Cy-Iem"/>
+                                <include reference="7nA-1M-Kqh"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="UZR-g8-UtW"/>
@@ -224,12 +242,15 @@
                                 <include reference="z2A-4N-6c6"/>
                                 <include reference="d0k-Zt-fnV"/>
                                 <include reference="hgw-lz-74D"/>
+                                <include reference="wi5-Sy-sgx"/>
+                                <include reference="NTL-VT-kgG"/>
                                 <include reference="Yed-cJ-oXI"/>
                                 <include reference="EwA-lV-Vlb"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="distortButton" destination="7nA-1M-Kqh" id="50X-Up-b7D"/>
                         <outlet property="fastButton" destination="SU0-xv-zlt" id="pcd-yS-9dZ"/>
                         <outlet property="pitchDownButton" destination="xLa-Cy-Iem" id="bk0-aa-sWX"/>
                         <outlet property="pitchUpButton" destination="bdL-S7-2Nv" id="1Lo-dM-U0q"/>

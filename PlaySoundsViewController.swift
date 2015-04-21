@@ -16,6 +16,7 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var pitchUpButton: UIButton!
     @IBOutlet weak var pitchDownButton: UIButton!
+    @IBOutlet weak var distortButton: UIButton!
     
     var audioPlayer: AVAudioPlayer!
     var receivedAudio: RecordedAudio!
@@ -26,22 +27,22 @@ class PlaySoundsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        if var filePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3"){
-//            var filePathUrl = NSURL.fileURLWithPath(filePath)
-//            audioPlayer = AVAudioPlayer(contentsOfURL: filePathUrl, error: nil)
-//            audioPlayer.enableRate = true
-//            audioPlayer.prepareToPlay()
-//            
-//        }else{
-//            println("file path is empty or incorrect")
-//        }
-        let session = AVAudioSession.sharedInstance()
-//        var error: NSError?
         
-//        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: &error)
-//        session.overrideOutputAudioPort(AVAudioSessionPortOverride.None, error: &error)
-//        session.setActive(true, error: &error)
+        //        if var filePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3"){
+        //            var filePathUrl = NSURL.fileURLWithPath(filePath)
+        //            audioPlayer = AVAudioPlayer(contentsOfURL: filePathUrl, error: nil)
+        //            audioPlayer.enableRate = true
+        //            audioPlayer.prepareToPlay()
+        //
+        //        }else{
+        //            println("file path is empty or incorrect")
+        //        }
+        let session = AVAudioSession.sharedInstance()
+        //        var error: NSError?
+        
+        //        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: &error)
+        //        session.overrideOutputAudioPort(AVAudioSessionPortOverride.None, error: &error)
+        //        session.setActive(true, error: &error)
         session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
         session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker, error: nil)
         session.setActive(true, error: nil)
@@ -84,6 +85,9 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithVariablePitch(-800)
     }
     
+    @IBAction func playDistortAudio(sender: AnyObject) {
+        playAudioWithDistortion()
+    }
     func playAudioWithVariablePitch(pitch: Float){
         audioPlayer.stop()
         audioEngine.stop()
@@ -102,9 +106,32 @@ class PlaySoundsViewController: UIViewController {
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         audioEngine.startAndReturnError(nil)
-//        audioPlayerNode.volume = 1.0
+        //        audioPlayerNode.volume = 1.0
         audioPlayerNode.play()
-    
+        
+    }
+    func playAudioWithDistortion(){
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        var audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        var distortEffect = AVAudioUnitDistortion()
+        distortEffect.loadFactoryPreset(AVAudioUnitDistortionPreset(rawValue: 19)!)
+//        changePitchEffect.distort = pitch
+        audioEngine.attachNode(distortEffect)
+        
+        
+        audioEngine.connect(audioPlayerNode, to: distortEffect, format: nil)
+        audioEngine.connect(distortEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        audioEngine.startAndReturnError(nil)
+        //        audioPlayerNode.volume = 1.0
+        audioPlayerNode.play()
+        
     }
     @IBAction func stopAudio(sender: UIButton) {
         audioPlayer.stop()
