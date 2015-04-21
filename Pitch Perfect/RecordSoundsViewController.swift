@@ -45,8 +45,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordingLabel.hidden = false
         recordingLabel.text = "tap the mic to record"
         //        stopButton.hidden = true
-        stopButton.alpha = 0.5
-        pauseButton.alpha = 0.5
+//        stopButton.alpha = 0.5
+//        pauseButton.alpha = 0.5
+        stopButton.enabled = false
+        pauseButton.enabled = false
         microphoneButton.enabled = true
         pauseButton.setImage(p2x, forState:UIControlState.Normal)
     
@@ -55,30 +57,39 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 //        recordingLabel.hidden = false
         recordingLabel.text = "recording..."
 //        stopButton.hidden = false
-        stopButton.alpha = 1.0
-        pauseButton.alpha = 1.0
+//        stopButton.alpha = 1.0
+//        pauseButton.alpha = 1.0
+        stopButton.enabled = true
+        pauseButton.enabled = true
         microphoneButton.enabled = false
  /////////////////////
         //Inside func recordAudio(sender: UIButton)
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-
-        var currentDateTime = NSDate()
-        var formatter = NSDateFormatter()
-        formatter.dateFormat = "ddMMyyyy-HHmmss"
-        var recordingName = formatter.stringFromDate(currentDateTime)+".wav"
-        var pathArray = [dirPath, recordingName]
-        let filePath = NSURL.fileURLWithPathComponents(pathArray)
-        println(filePath)
-        
-        var session = AVAudioSession.sharedInstance()
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
-       
-        audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
-        audioRecorder.delegate = self
-        audioRecorder.meteringEnabled = true
-        audioRecorder.prepareToRecord()
-        audioRecorder.record()
+        if (audioRecorder == nil){
+            let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+            
+            var currentDateTime = NSDate()
+            var formatter = NSDateFormatter()
+            formatter.dateFormat = "ddMMyyyy-HHmmss"
+            var recordingName = formatter.stringFromDate(currentDateTime)+".wav"
+            var pathArray = [dirPath, recordingName]
+            let filePath = NSURL.fileURLWithPathComponents(pathArray)
+            println(filePath)
+            
+            var session = AVAudioSession.sharedInstance()
+            session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+            
+            audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
+            audioRecorder.delegate = self
+            audioRecorder.meteringEnabled = true
+            audioRecorder.prepareToRecord()
+            audioRecorder.record()
+        }else{
+            audioRecorder.record()
+            
         }
+       
+    }
+    
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if (flag){
             recordedAudio = RecordedAudio(filePathUrl:recorder.url,title:recorder.url.lastPathComponent!)
@@ -99,12 +110,18 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func pauseRecording(sender: AnyObject) {
         if (audioRecorder.recording){
             audioRecorder.pause()
-            pauseButton.setImage(r2x, forState:UIControlState.Normal)
-            recordingLabel.text = "resume recording"
+//            pauseButton.setImage(r2x, forState:UIControlState.Normal)
+//            stopButton.enabled = false
+//            pauseButton.enabled = false
+            microphoneButton.enabled = true
+            recordingLabel.text = "tap to resume recording"
 
         }else{
             audioRecorder.record()
-            pauseButton.setImage(p2x, forState:UIControlState.Normal)
+//            pauseButton.setImage(p2x, forState:UIControlState.Normal)
+//            stopButton.enabled = false
+//            pauseButton.enabled = false
+            microphoneButton.enabled = false
             recordingLabel.text = "recording..."
 
         }
