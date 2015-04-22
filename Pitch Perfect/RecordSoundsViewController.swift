@@ -112,7 +112,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             audioRecorder.pause()
 //            pauseButton.setImage(r2x, forState:UIControlState.Normal)
 //            stopButton.enabled = false
-//            pauseButton.enabled = false
+            pauseButton.enabled = false
             microphoneButton.enabled = true
             recordingLabel.text = "tap to resume recording"
 
@@ -120,7 +120,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             audioRecorder.record()
 //            pauseButton.setImage(p2x, forState:UIControlState.Normal)
 //            stopButton.enabled = false
-//            pauseButton.enabled = false
+            pauseButton.enabled = true
             microphoneButton.enabled = false
             recordingLabel.text = "recording..."
 
