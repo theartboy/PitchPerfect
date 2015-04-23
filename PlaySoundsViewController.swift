@@ -46,8 +46,8 @@ class PlaySoundsViewController: UIViewController{
         //        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: &error)
         //        session.overrideOutputAudioPort(AVAudioSessionPortOverride.None, error: &error)
         //        session.setActive(true, error: &error)
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
-        session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker, error: nil)
+        session.setCategory(AVAudioSessionCategoryPlayback, error: nil)
+//        session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker, error: nil)
         session.setActive(true, error: nil)
         
         audioEngine = AVAudioEngine()
