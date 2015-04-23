@@ -75,7 +75,7 @@ class PlaySoundsViewController: UIViewController{
 //        audioPlayer.currentTime = 0.0
 //        audioPlayer.play()
 //        playAudio()
-        playAudioWithVariableRate(0.5)
+        playAudioWithVariablePitchRate("rate", amount: 0.6)
     }
 
     @IBAction func playFastAudio(sender: UIButton) {
@@ -84,23 +84,52 @@ class PlaySoundsViewController: UIViewController{
 //        audioPlayer.currentTime = 0.0
 //        audioPlayer.play()
 //        playAudio()
-        playAudioWithVariableRate(2)
+        playAudioWithVariablePitchRate("rate", amount: 3)
 
     }
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
-        playAudioWithVariablePitch(1000)
+        playAudioWithVariablePitchRate("pitch", amount: 1000)
     }
     
     @IBAction func playVaderAudio(sender: AnyObject) {
-        playAudioWithVariablePitch(-800)
+        playAudioWithVariablePitchRate("pitch", amount: -800)
     }
     
     @IBAction func playDistortAudio(sender: AnyObject) {
         playAudioWithDistortion()
     }
+    func playAudioWithVariablePitchRate(type: String, amount: Float){
+        //        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        var audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        var changePitchRateEffect = AVAudioUnitTimePitch()
+
+        if (type == "pitch"){
+            changePitchRateEffect.pitch = amount
+        }else{
+            changePitchRateEffect.rate = amount
+        }
+
+        audioEngine.attachNode(changePitchRateEffect)
+        
+        
+        audioEngine.connect(audioPlayerNode, to: changePitchRateEffect, format: nil)
+        audioEngine.connect(changePitchRateEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: disableStopButton)
+        audioEngine.startAndReturnError(nil)
+        //        audioPlayerNode.volume = 1.0
+        stopButton.enabled = true
+        audioPlayerNode.play()
+        
+        
+    }
     func playAudioWithVariablePitch(pitch: Float){
-//        audioPlayer.stop()
+        //        audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
         
