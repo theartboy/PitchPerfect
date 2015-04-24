@@ -112,23 +112,35 @@ class PlaySoundsViewController: UIViewController{
         audioEngine.stop()
         audioEngine.reset()
         
+        var mainMixerNode = AVAudioMixerNode()
+        
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
+        
         var reverbEffect = AVAudioUnitReverb()
         reverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
-        reverbEffect.wetDryMix = 40
+        reverbEffect.wetDryMix = 20
+        
+        var distortEffect = AVAudioUnitDistortion()
+        distortEffect.loadFactoryPreset(AVAudioUnitDistortionPreset.DrumsBitBrush)
+        distortEffect.wetDryMix = 80
+        
+//        audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
+        
+        var changePitchRateEffect = AVAudioUnitTimePitch()
+        changePitchRateEffect.pitch = -600
+        changePitchRateEffect.rate = 1.2
+        
+        audioEngine.attachNode(mainMixerNode)
         audioEngine.attachNode(reverbEffect)
+        audioEngine.attachNode(changePitchRateEffect)
+        audioEngine.attachNode(distortEffect)
         
-        
-        audioEngine.connect(audioPlayerNode, to: reverbEffect, format: nil)
-        audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
-        
-//        var changePitchRateEffect = AVAudioUnitTimePitch()
-//        changePitchRateEffect.pitch = -500
-//        changePitchRateEffect.rate = 2
-//        audioEngine.attachNode(changePitchRateEffect)
-//        audioEngine.connect(audioPlayerNode, to: changePitchRateEffect, format: nil)
-//        audioEngine.connect(changePitchRateEffect, to: audioEngine.outputNode, format: nil)
+        audioEngine.connect(audioPlayerNode, to: changePitchRateEffect, format: nil)
+        audioEngine.connect(changePitchRateEffect, to: distortEffect, format: nil)
+        audioEngine.connect(distortEffect, to: reverbEffect, format: nil)
+        audioEngine.connect(reverbEffect, to: mainMixerNode, format: nil)
+        audioEngine.connect(mainMixerNode, to: audioEngine.outputNode, format: nil)
 
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: disableStopButton)
