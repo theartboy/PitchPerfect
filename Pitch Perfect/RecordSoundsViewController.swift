@@ -22,6 +22,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     var recordedAudio:RecordedAudio!
     let p2x = UIImage(named: "pause2x.png") as UIImage!
     let r2x = UIImage(named: "rerecord2x.png") as UIImage!
+    var magColor = UIColor(red: 0.6, green: 0.0, blue: 0.2, alpha: 1.0)
+    var redColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     func hideStuff(){
         recordingLabel.hidden = false
+        recordingLabel.textColor = magColor
+//        recordingLabel.textColor(UIColor.magentaColor)
         recordingLabel.text = "tap the mic to record"
         //        stopButton.hidden = true
 //        stopButton.alpha = 0.5
@@ -55,6 +59,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     @IBAction func recordAudio(sender: UIButton) {
 //        recordingLabel.hidden = false
+        recordingLabel.textColor = redColor
         recordingLabel.text = "recording..."
 //        stopButton.hidden = false
 //        stopButton.alpha = 1.0
@@ -115,6 +120,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 //            stopButton.enabled = false
             pauseButton.enabled = false
             microphoneButton.enabled = true
+            recordingLabel.textColor = magColor
             recordingLabel.text = "tap to resume recording"
 
         }else{
@@ -123,6 +129,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 //            stopButton.enabled = false
             pauseButton.enabled = true
             microphoneButton.enabled = false
+            recordingLabel.textColor = redColor
             recordingLabel.text = "recording..."
 
         }

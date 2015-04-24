@@ -76,7 +76,7 @@ class PlaySoundsViewController: UIViewController{
 //        audioPlayer.currentTime = 0.0
 //        audioPlayer.play()
 //        playAudio()
-        playAudioWithVariablePitchRate("rate", amount: 0.6)
+        playAudioWithVariablePitchRate(0.0, _rate: 0.6)
     }
 
     @IBAction func playFastAudio(sender: UIButton) {
@@ -85,16 +85,16 @@ class PlaySoundsViewController: UIViewController{
 //        audioPlayer.currentTime = 0.0
 //        audioPlayer.play()
 //        playAudio()
-        playAudioWithVariablePitchRate("rate", amount: 3)
+        playAudioWithVariablePitchRate(0.0, _rate: 3)
 
     }
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
-        playAudioWithVariablePitchRate("pitch", amount: 1000)
+        playAudioWithVariablePitchRate(1000, _rate: 1.0)
     }
     
     @IBAction func playVaderAudio(sender: AnyObject) {
-        playAudioWithVariablePitchRate("pitch", amount: -800)
+        playAudioWithVariablePitchRate(-800, _rate: 1.0)
     }
     
     
@@ -150,7 +150,7 @@ class PlaySoundsViewController: UIViewController{
         
         
     }
-    func playAudioWithVariablePitchRate(type: String, amount: Float){
+    func playAudioWithVariablePitchRate(_pitch: Float, _rate: Float){
         //        audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
@@ -159,11 +159,8 @@ class PlaySoundsViewController: UIViewController{
         audioEngine.attachNode(audioPlayerNode)
         var changePitchRateEffect = AVAudioUnitTimePitch()
         
-        if (type == "pitch"){
-            changePitchRateEffect.pitch = amount
-        }else{
-            changePitchRateEffect.rate = amount
-        }
+        changePitchRateEffect.pitch = _pitch
+        changePitchRateEffect.rate = _rate
         
         audioEngine.attachNode(changePitchRateEffect)
         
