@@ -18,6 +18,7 @@ class PlaySoundsViewController: UIViewController{
     @IBOutlet weak var pitchDownButton: UIButton!
     @IBOutlet weak var distortButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var frogButton: UIButton!
     
     var audioPlayer: AVAudioPlayer!
     var playerDelegate: AVAudioPlayerDelegate!
@@ -96,8 +97,46 @@ class PlaySoundsViewController: UIViewController{
         playAudioWithVariablePitchRate("pitch", amount: -800)
     }
     
+    
     @IBAction func playDistortAudio(sender: AnyObject) {
         playAudioWithDistortion()
+    }
+    
+    @IBAction func playFrogAudio(sender: AnyObject) {
+        playAudioWithReverb()
+        
+        
+    }
+    func playAudioWithReverb(){
+        //        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        var audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        var reverbEffect = AVAudioUnitReverb()
+        reverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
+        reverbEffect.wetDryMix = 40
+        audioEngine.attachNode(reverbEffect)
+        
+        
+        audioEngine.connect(audioPlayerNode, to: reverbEffect, format: nil)
+        audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
+        
+//        var changePitchRateEffect = AVAudioUnitTimePitch()
+//        changePitchRateEffect.pitch = -500
+//        changePitchRateEffect.rate = 2
+//        audioEngine.attachNode(changePitchRateEffect)
+//        audioEngine.connect(audioPlayerNode, to: changePitchRateEffect, format: nil)
+//        audioEngine.connect(changePitchRateEffect, to: audioEngine.outputNode, format: nil)
+
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: disableStopButton)
+        audioEngine.startAndReturnError(nil)
+        stopButton.enabled = true
+        audioPlayerNode.play()
+        
+        
     }
     func playAudioWithVariablePitchRate(type: String, amount: Float){
         //        audioPlayer.stop()
@@ -107,15 +146,14 @@ class PlaySoundsViewController: UIViewController{
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         var changePitchRateEffect = AVAudioUnitTimePitch()
-
+        
         if (type == "pitch"){
             changePitchRateEffect.pitch = amount
         }else{
             changePitchRateEffect.rate = amount
         }
-
-        audioEngine.attachNode(changePitchRateEffect)
         
+        audioEngine.attachNode(changePitchRateEffect)
         
         audioEngine.connect(audioPlayerNode, to: changePitchRateEffect, format: nil)
         audioEngine.connect(changePitchRateEffect, to: audioEngine.outputNode, format: nil)
@@ -128,54 +166,54 @@ class PlaySoundsViewController: UIViewController{
         
         
     }
-    func playAudioWithVariablePitch(pitch: Float){
-        //        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
-        
-        var audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
-        
-        var changePitchEffect = AVAudioUnitTimePitch()
-        changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
-        
-        
-        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
-        
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: disableStopButton)
-        audioEngine.startAndReturnError(nil)
-        //        audioPlayerNode.volume = 1.0
-        stopButton.enabled = true
-        audioPlayerNode.play()
-        
-        
-    }
-    func playAudioWithVariableRate(rate: Float){
-//        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
-        
-        var audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
-        
-        var changeRateEffect = AVAudioUnitTimePitch()
-        changeRateEffect.rate = rate
-        audioEngine.attachNode(changeRateEffect)
-        
-        
-        audioEngine.connect(audioPlayerNode, to: changeRateEffect, format: nil)
-        audioEngine.connect(changeRateEffect, to: audioEngine.outputNode, format: nil)
-        
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: disableStopButton)
-        audioEngine.startAndReturnError(nil)
-        //        audioPlayerNode.volume = 1.0
-        stopButton.enabled = true
-        audioPlayerNode.play()
-        
-        
-    }
+//    func playAudioWithVariablePitch(pitch: Float){
+//        //        audioPlayer.stop()
+//        audioEngine.stop()
+//        audioEngine.reset()
+//        
+//        var audioPlayerNode = AVAudioPlayerNode()
+//        audioEngine.attachNode(audioPlayerNode)
+//        
+//        var changePitchEffect = AVAudioUnitTimePitch()
+//        changePitchEffect.pitch = pitch
+//        audioEngine.attachNode(changePitchEffect)
+//        
+//        
+//        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
+//        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+//        
+//        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: disableStopButton)
+//        audioEngine.startAndReturnError(nil)
+//        //        audioPlayerNode.volume = 1.0
+//        stopButton.enabled = true
+//        audioPlayerNode.play()
+//        
+//        
+//    }
+//    func playAudioWithVariableRate(rate: Float){
+////        audioPlayer.stop()
+//        audioEngine.stop()
+//        audioEngine.reset()
+//        
+//        var audioPlayerNode = AVAudioPlayerNode()
+//        audioEngine.attachNode(audioPlayerNode)
+//        
+//        var changeRateEffect = AVAudioUnitTimePitch()
+//        changeRateEffect.rate = rate
+//        audioEngine.attachNode(changeRateEffect)
+//        
+//        
+//        audioEngine.connect(audioPlayerNode, to: changeRateEffect, format: nil)
+//        audioEngine.connect(changeRateEffect, to: audioEngine.outputNode, format: nil)
+//        
+//        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: disableStopButton)
+//        audioEngine.startAndReturnError(nil)
+//        //        audioPlayerNode.volume = 1.0
+//        stopButton.enabled = true
+//        audioPlayerNode.play()
+//        
+    
+//    }
     func disableStopButton(){
         stopButton.enabled = false
     }
@@ -188,7 +226,8 @@ class PlaySoundsViewController: UIViewController{
         audioEngine.attachNode(audioPlayerNode)
         //19
         var distortEffect = AVAudioUnitDistortion()
-        distortEffect.loadFactoryPreset(AVAudioUnitDistortionPreset(rawValue: 19)!)
+        distortEffect.loadFactoryPreset(AVAudioUnitDistortionPreset.SpeechGoldenPi)
+//        distortEffect.loadFactoryPreset(AVAudioUnitDistortionPreset(rawValue: 19)!)
 //        changePitchEffect.distort = pitch
         audioEngine.attachNode(distortEffect)
         
