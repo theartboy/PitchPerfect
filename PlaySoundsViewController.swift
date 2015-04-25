@@ -94,7 +94,7 @@ class PlaySoundsViewController: UIViewController{
     }
     
     @IBAction func playVaderAudio(sender: AnyObject) {
-        playAudioWithVariablePitchRate(-800, _rate: 1.0)
+        playAudioWithVariablePitchRate(-900, _rate: 1.0)
     }
     
     
@@ -119,24 +119,28 @@ class PlaySoundsViewController: UIViewController{
         
         var reverbEffect = AVAudioUnitReverb()
         reverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
-        reverbEffect.wetDryMix = 20
+        reverbEffect.wetDryMix = 10
         
         var distortEffect = AVAudioUnitDistortion()
         distortEffect.loadFactoryPreset(AVAudioUnitDistortionPreset.DrumsBitBrush)
         distortEffect.wetDryMix = 80
         
-//        audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
+        var delayEffect = AVAudioUnitDelay()
+        delayEffect.delayTime = 80
+        delayEffect.wetDryMix = 10
         
         var changePitchRateEffect = AVAudioUnitTimePitch()
-        changePitchRateEffect.pitch = -600
-        changePitchRateEffect.rate = 1.2
+        changePitchRateEffect.pitch = -200
+        changePitchRateEffect.rate = 0.9
         
         audioEngine.attachNode(mainMixerNode)
         audioEngine.attachNode(reverbEffect)
         audioEngine.attachNode(changePitchRateEffect)
         audioEngine.attachNode(distortEffect)
+        audioEngine.attachNode(delayEffect)
         
-        audioEngine.connect(audioPlayerNode, to: changePitchRateEffect, format: nil)
+        audioEngine.connect(audioPlayerNode, to: delayEffect, format: nil)
+        audioEngine.connect(delayEffect, to: changePitchRateEffect, format: nil)
         audioEngine.connect(changePitchRateEffect, to: distortEffect, format: nil)
         audioEngine.connect(distortEffect, to: reverbEffect, format: nil)
         audioEngine.connect(reverbEffect, to: mainMixerNode, format: nil)
