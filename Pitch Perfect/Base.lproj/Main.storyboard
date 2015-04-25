@@ -43,14 +43,11 @@
                                     <action selector="pauseRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="e0A-Dt-grO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap the mic to record" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-Wf-ymN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap the mic to record" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9o-Op-DaZ">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.58589504076086962" green="0.13108926935529847" blue="0.40293047981299107" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.58589504079999999" green="0.13108926940000001" blue="0.40293047980000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="119" y="373" width="163.5" height="20.5"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.63323640823364258" green="0.6228632926940918" blue="0.73329055309295654" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,24 +55,24 @@
                             <constraint firstAttribute="centerX" secondItem="Bgx-Tz-oag" secondAttribute="centerX" constant="-29" id="0f5-M1-ysX"/>
                             <constraint firstAttribute="centerX" secondItem="ECB-do-tWm" secondAttribute="centerX" constant="29" id="63g-XF-Icy"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ECB-do-tWm" secondAttribute="bottom" constant="98" id="EDb-Wb-hUO"/>
-                            <constraint firstItem="fYc-Wf-ymN" firstAttribute="top" secondItem="y9M-re-3dt" secondAttribute="bottom" constant="23" id="U5K-5j-55y"/>
+                            <constraint firstAttribute="centerX" secondItem="R9o-Op-DaZ" secondAttribute="centerX" constant="-0.5" id="Qs1-GN-ZMK"/>
                             <constraint firstAttribute="centerX" secondItem="y9M-re-3dt" secondAttribute="centerX" id="a6m-Dj-ECe"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Bgx-Tz-oag" secondAttribute="bottom" constant="98" id="cdl-9Q-abG"/>
+                            <constraint firstItem="R9o-Op-DaZ" firstAttribute="top" secondItem="y9M-re-3dt" secondAttribute="bottom" constant="25" id="kGc-il-xOs"/>
                             <constraint firstAttribute="centerY" secondItem="y9M-re-3dt" secondAttribute="centerY" id="qlS-zh-ccD"/>
-                            <constraint firstAttribute="centerX" secondItem="fYc-Wf-ymN" secondAttribute="centerX" constant="-0.75" id="wlX-18-2b4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="y9M-re-3dt"/>
                                 <exclude reference="Bgx-Tz-oag"/>
                                 <exclude reference="ECB-do-tWm"/>
-                                <exclude reference="fYc-Wf-ymN"/>
+                                <exclude reference="R9o-Op-DaZ"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="a6m-Dj-ECe"/>
                                 <exclude reference="qlS-zh-ccD"/>
-                                <exclude reference="U5K-5j-55y"/>
-                                <exclude reference="wlX-18-2b4"/>
+                                <exclude reference="Qs1-GN-ZMK"/>
+                                <exclude reference="kGc-il-xOs"/>
                                 <exclude reference="63g-XF-Icy"/>
                                 <exclude reference="0f5-M1-ysX"/>
                                 <exclude reference="EDb-Wb-hUO"/>
@@ -87,13 +84,13 @@
                                 <include reference="y9M-re-3dt"/>
                                 <include reference="Bgx-Tz-oag"/>
                                 <include reference="ECB-do-tWm"/>
-                                <include reference="fYc-Wf-ymN"/>
+                                <include reference="R9o-Op-DaZ"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="a6m-Dj-ECe"/>
                                 <include reference="qlS-zh-ccD"/>
-                                <include reference="U5K-5j-55y"/>
-                                <include reference="wlX-18-2b4"/>
+                                <include reference="Qs1-GN-ZMK"/>
+                                <include reference="kGc-il-xOs"/>
                                 <include reference="63g-XF-Icy"/>
                                 <include reference="0f5-M1-ysX"/>
                                 <include reference="EDb-Wb-hUO"/>
@@ -105,7 +102,7 @@
                     <connections>
                         <outlet property="microphoneButton" destination="y9M-re-3dt" id="YtK-02-WLj"/>
                         <outlet property="pauseButton" destination="ECB-do-tWm" id="4qd-GD-Rfj"/>
-                        <outlet property="recordingLabel" destination="fYc-Wf-ymN" id="u45-t0-OjR"/>
+                        <outlet property="recordingLabel" destination="R9o-Op-DaZ" id="OKN-Nb-Hnc"/>
                         <outlet property="stopButton" destination="Bgx-Tz-oag" id="nl4-FW-bQv"/>
                         <segue destination="cd4-Kt-Z4G" kind="presentation" identifier="stopRecording" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="azP-sj-ca8"/>
                     </connections>
