@@ -104,7 +104,7 @@
                         <outlet property="pauseButton" destination="ECB-do-tWm" id="4qd-GD-Rfj"/>
                         <outlet property="recordingLabel" destination="R9o-Op-DaZ" id="OKN-Nb-Hnc"/>
                         <outlet property="stopButton" destination="Bgx-Tz-oag" id="nl4-FW-bQv"/>
-                        <segue destination="cd4-Kt-Z4G" kind="presentation" identifier="stopRecording" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="azP-sj-ca8"/>
+                        <segue destination="cd4-Kt-Z4G" kind="show" identifier="stopRecording" id="azP-sj-ca8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -184,7 +184,7 @@
                                 </state>
                                 <connections>
                                     <action selector="backToRecord:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="L1X-pT-8hG"/>
-                                    <segue destination="vXZ-lx-hvc" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="q8V-99-SId"/>
+                                    <segue destination="vXZ-lx-hvc" kind="show" id="q8V-99-SId"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zg-nv-xtP">
