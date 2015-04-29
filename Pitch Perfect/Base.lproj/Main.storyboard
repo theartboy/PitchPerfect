@@ -27,7 +27,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgx-Tz-oag">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="play@2x-iphone">
+                                <state key="normal" image="stopButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -177,16 +177,6 @@
                                     <action selector="playDistortAudio:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="pH9-Fd-Hn5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqB-JX-a4d">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="back@2xiphone">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backToRecord:" destination="cd4-Kt-Z4G" eventType="touchUpInside" id="L1X-pT-8hG"/>
-                                    <segue destination="vXZ-lx-hvc" kind="show" id="q8V-99-SId"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zg-nv-xtP">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="frog@2xiphone">
@@ -199,8 +189,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.69054770469665527" green="0.72005343437194824" blue="0.83381742238998413" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="hqB-JX-a4d" secondAttribute="centerX" constant="29" id="0cI-HK-IO7"/>
-                            <constraint firstItem="XPZ-oH-Xf7" firstAttribute="top" secondItem="hqB-JX-a4d" secondAttribute="bottom" constant="98" id="0jk-Hi-w1d"/>
                             <constraint firstAttribute="centerX" secondItem="1zg-nv-xtP" secondAttribute="centerX" constant="-65" id="620-ij-YAq"/>
                             <constraint firstItem="xLa-Cy-Iem" firstAttribute="top" secondItem="SU0-xv-zlt" secondAttribute="bottom" constant="15" id="8Mc-u7-WJe"/>
                             <constraint firstItem="xLa-Cy-Iem" firstAttribute="leading" secondItem="bdL-S7-2Nv" secondAttribute="trailing" constant="41" id="8f3-EN-MoU"/>
@@ -212,7 +200,7 @@
                             <constraint firstItem="1zg-nv-xtP" firstAttribute="top" secondItem="xLa-Cy-Iem" secondAttribute="bottom" constant="15" id="Mip-lq-0fd"/>
                             <constraint firstAttribute="centerX" secondItem="7nA-1M-Kqh" secondAttribute="centerX" constant="76" id="SUM-w1-ChN"/>
                             <constraint firstItem="bdL-S7-2Nv" firstAttribute="top" secondItem="uro-1n-WUP" secondAttribute="bottom" constant="15" id="XGq-Q6-ft1"/>
-                            <constraint firstAttribute="centerX" secondItem="URH-L9-9Cg" secondAttribute="centerX" constant="-29" id="Yed-cJ-oXI"/>
+                            <constraint firstAttribute="centerX" secondItem="URH-L9-9Cg" secondAttribute="centerX" id="Yed-cJ-oXI"/>
                             <constraint firstAttribute="centerX" secondItem="SU0-xv-zlt" secondAttribute="centerX" constant="-66" id="f8Y-Zc-88W"/>
                             <constraint firstAttribute="centerX" secondItem="uro-1n-WUP" secondAttribute="centerX" constant="75" id="gOm-Q8-9EI"/>
                             <constraint firstItem="7nA-1M-Kqh" firstAttribute="top" secondItem="bdL-S7-2Nv" secondAttribute="bottom" constant="15" id="njv-K3-v02"/>
@@ -227,11 +215,9 @@
                                 <exclude reference="bdL-S7-2Nv"/>
                                 <exclude reference="xLa-Cy-Iem"/>
                                 <exclude reference="7nA-1M-Kqh"/>
-                                <exclude reference="hqB-JX-a4d"/>
                                 <exclude reference="1zg-nv-xtP"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="0jk-Hi-w1d"/>
                                 <exclude reference="BYr-m6-iWg"/>
                                 <exclude reference="EwA-lV-Vlb"/>
                                 <exclude reference="F2F-VZ-JgW"/>
@@ -245,7 +231,6 @@
                                 <exclude reference="Yed-cJ-oXI"/>
                                 <exclude reference="Bhr-KW-XYh"/>
                                 <exclude reference="XGq-Q6-ft1"/>
-                                <exclude reference="0cI-HK-IO7"/>
                                 <exclude reference="gOm-Q8-9EI"/>
                                 <exclude reference="8Mc-u7-WJe"/>
                                 <exclude reference="8f3-EN-MoU"/>
@@ -260,11 +245,9 @@
                                 <include reference="bdL-S7-2Nv"/>
                                 <include reference="xLa-Cy-Iem"/>
                                 <include reference="7nA-1M-Kqh"/>
-                                <include reference="hqB-JX-a4d"/>
                                 <include reference="1zg-nv-xtP"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="0jk-Hi-w1d"/>
                                 <include reference="BYr-m6-iWg"/>
                                 <include reference="EwA-lV-Vlb"/>
                                 <include reference="F2F-VZ-JgW"/>
@@ -278,7 +261,6 @@
                                 <include reference="Yed-cJ-oXI"/>
                                 <include reference="Bhr-KW-XYh"/>
                                 <include reference="XGq-Q6-ft1"/>
-                                <include reference="0cI-HK-IO7"/>
                                 <include reference="gOm-Q8-9EI"/>
                                 <include reference="8Mc-u7-WJe"/>
                                 <include reference="8f3-EN-MoU"/>
@@ -287,7 +269,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="hqB-JX-a4d" id="iUe-xE-mLc"/>
                         <outlet property="distortButton" destination="7nA-1M-Kqh" id="50X-Up-b7D"/>
                         <outlet property="fastButton" destination="SU0-xv-zlt" id="pcd-yS-9dZ"/>
                         <outlet property="frogButton" destination="1zg-nv-xtP" id="Kb3-la-RCM"/>
@@ -321,19 +302,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back@2xiphone" width="50" height="50"/>
         <image name="chipmunk" width="100" height="100"/>
         <image name="darthvader@2x-iphone" width="100" height="100"/>
         <image name="fast@2x-iphone-1" width="100" height="100"/>
         <image name="frog@2xiphone" width="98" height="98"/>
         <image name="microphone" width="100" height="100"/>
         <image name="pause2x" width="50" height="50"/>
-        <image name="play@2x-iphone" width="50" height="50"/>
         <image name="robot@2xiphone" width="98" height="98"/>
         <image name="slow" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="q8V-99-SId"/>
-    </inferredMetricsTieBreakers>
 </document>

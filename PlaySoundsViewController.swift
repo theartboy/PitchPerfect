@@ -17,7 +17,6 @@ class PlaySoundsViewController: UIViewController{
     @IBOutlet weak var pitchUpButton: UIButton!
     @IBOutlet weak var pitchDownButton: UIButton!
     @IBOutlet weak var distortButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var frogButton: UIButton!
     
     var audioPlayer: AVAudioPlayer!
@@ -77,10 +76,6 @@ class PlaySoundsViewController: UIViewController{
         disableStopButton()
     }
 
-    @IBAction func backToRecord(sender: AnyObject) {
-        session.setActive(false, error: nil)
-        stopAudio()
-    }
     
     func playAudioWithReverb(){
         stopAudio()
