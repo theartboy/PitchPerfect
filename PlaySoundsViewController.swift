@@ -26,11 +26,12 @@ class PlaySoundsViewController: UIViewController{
     var audioEngine: AVAudioEngine!
     
     var audioFile: AVAudioFile!
-    let session = AVAudioSession.sharedInstance()
+    var session: AVAudioSession!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        session = AVAudioSession.sharedInstance()
         session.setCategory(AVAudioSessionCategoryPlayback, error: nil)
         session.setActive(true, error: nil)
         
@@ -69,13 +70,20 @@ class PlaySoundsViewController: UIViewController{
     
     @IBAction func playFrogAudio(sender: AnyObject) {
         playAudioWithReverb()
-        
-        
     }
+    
+    @IBAction func stopAudio(sender: UIButton) {
+        stopAudio()
+        disableStopButton()
+    }
+
+    @IBAction func backToRecord(sender: AnyObject) {
+        session.setActive(false, error: nil)
+        stopAudio()
+    }
+    
     func playAudioWithReverb(){
-        //        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAudio()
         
         var mainMixerNode = AVAudioMixerNode()
         
@@ -119,8 +127,7 @@ class PlaySoundsViewController: UIViewController{
         
     }
     func playAudioWithVariablePitchRate(_pitch: Float, _rate: Float){
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAudio()
         
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -138,16 +145,10 @@ class PlaySoundsViewController: UIViewController{
         audioEngine.startAndReturnError(nil)
         stopButton.enabled = true
         audioPlayerNode.play()
-        
-        
     }
-
-    func disableStopButton(){
-        stopButton.enabled = false
-    }
+    
     func playAudioWithDistortion(){
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAudio()
         
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -166,16 +167,14 @@ class PlaySoundsViewController: UIViewController{
         audioPlayerNode.play()
         
     }
-    @IBAction func stopAudio(sender: UIButton) {
-        audioEngine.stop()
-        audioEngine.reset()
+    
+    func disableStopButton(){
         stopButton.enabled = false
     }
-
-    @IBAction func backToRecord(sender: AnyObject) {
-        session.setActive(false, error: nil)
+    
+    func stopAudio(){
         audioEngine.stop()
         audioEngine.reset()
     }
-   
+    
 }

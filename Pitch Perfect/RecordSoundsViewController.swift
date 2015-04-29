@@ -19,13 +19,16 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
-    var magColor = UIColor(red: 0.6, green: 0.0, blue: 0.2, alpha: 1.0)
-    var redColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
-    var session = AVAudioSession.sharedInstance()
+    var magColor: UIColor!
+    var redColor: UIColor!
+    var session: AVAudioSession!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        var recordedAudio:RecordedAudio!
+        magColor = UIColor(red: 0.6, green: 0.0, blue: 0.2, alpha: 1.0)
+        redColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        session = AVAudioSession.sharedInstance()
     }
     override func viewWillAppear(animated: Bool) {
         session.setCategory(AVAudioSessionCategoryRecord, error: nil)
@@ -35,15 +38,16 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    //instead of having buttons show and hide
+    //user testing revealed the enable and disable approach
+    //was more intuitive for users
     func userInterfaceReadyToRecord(){
         recordingLabel.textColor = magColor
         recordingLabel.text = "tap the mic to record"
         stopButton.enabled = false
         pauseButton.enabled = false
         microphoneButton.enabled = true
-        
     }
     func userInterfaceRecording(){
         recordingLabel.textColor = redColor
@@ -51,7 +55,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.enabled = true
         pauseButton.enabled = true
         microphoneButton.enabled = false
-        
     }
     @IBAction func recordAudio(sender: UIButton) {
         userInterfaceRecording()
@@ -71,10 +74,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             audioRecorder.prepareToRecord()
             audioRecorder.record()
         }else{
-            audioRecorder.record()
-            
+            audioRecorder.record()            
         }
-       
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
@@ -89,6 +90,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func pauseRecording(sender: AnyObject) {
         if (audioRecorder.recording){
             audioRecorder.pause()
+            //did not use userInterfaceReadyToRecord because this use case is different that the others.
             pauseButton.enabled = false
             stopButton.enabled = true
             microphoneButton.enabled = true
