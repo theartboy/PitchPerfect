@@ -30,29 +30,33 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewWillAppear(animated: Bool) {
         session.setCategory(AVAudioSessionCategoryRecord, error: nil)
         session.setActive(true, error: nil)
-        hideStuff()
+        userInterfaceReadyToRecord()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func hideStuff(){
+    func userInterfaceReadyToRecord(){
         recordingLabel.textColor = magColor
         recordingLabel.text = "tap the mic to record"
         stopButton.enabled = false
         pauseButton.enabled = false
         microphoneButton.enabled = true
-    
+        
     }
-    @IBAction func recordAudio(sender: UIButton) {
+    func userInterfaceRecording(){
         recordingLabel.textColor = redColor
         recordingLabel.text = "recording..."
         stopButton.enabled = true
         pauseButton.enabled = true
         microphoneButton.enabled = false
+        
+    }
+    @IBAction func recordAudio(sender: UIButton) {
+        userInterfaceRecording()
         if (audioRecorder == nil){
-            let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+            let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
             
             var currentDateTime = NSDate()
             var formatter = NSDateFormatter()
@@ -60,7 +64,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             var recordingName = formatter.stringFromDate(currentDateTime)+".wav"
             var pathArray = [dirPath, recordingName]
             let filePath = NSURL.fileURLWithPathComponents(pathArray)
-//            println(filePath)
             
             audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
             audioRecorder.delegate = self
@@ -80,31 +83,28 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         }else{
             println("Recording was a failure")
-            hideStuff()
+            userInterfaceReadyToRecord()
         }
     }
     @IBAction func pauseRecording(sender: AnyObject) {
         if (audioRecorder.recording){
             audioRecorder.pause()
             pauseButton.enabled = false
+            stopButton.enabled = true
             microphoneButton.enabled = true
             recordingLabel.textColor = magColor
             recordingLabel.text = "tap to resume recording"
 
         }else{
             audioRecorder.record()
-            pauseButton.enabled = true
-            microphoneButton.enabled = false
-            recordingLabel.textColor = redColor
-            recordingLabel.text = "recording..."
-
+            userInterfaceRecording()
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier=="stopRecording"){
-            let playSoundsVC:PlaySoundsViewController=segue.destinationViewController as PlaySoundsViewController
-            let data = sender as RecordedAudio
+            let playSoundsVC:PlaySoundsViewController=segue.destinationViewController as! PlaySoundsViewController
+            let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
         }
     }
@@ -112,7 +112,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func stopRecording(sender: UIButton) {
         audioRecorder.stop()
         session.setActive(false, error: nil)
-        hideStuff()
+        userInterfaceReadyToRecord()
     }
 }
 
